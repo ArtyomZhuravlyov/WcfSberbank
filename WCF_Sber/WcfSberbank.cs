@@ -52,5 +52,16 @@ namespace WCF_Sber
         {
             refundOrder 
         }
+
+        /// <summary>
+        /// Запрос состояния заказа
+        /// </summary>
+        /// <param name="orderId">Номер заказа в платежной системе. Уникален в пределах системы.</param>
+        public void getOrderStatus(string orderId)
+        {
+            orderStatusRequest OrderStatusRequest = new orderStatusRequest();
+            OrderStatusRequest.orderId = orderId;
+            var response = _merchantServiceClient.getOrderStatusAsync(OrderStatusRequest);
+        }
     }
 }
